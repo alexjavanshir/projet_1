@@ -7,7 +7,7 @@ public class Personne {
     private int contact;
 
     public Personne(String nom, String adresse, int contact) {
-        this.identifiant = genererIdentifiantAleatoire();
+        this.identifiant = genererIdentifiant();
         this.nom = nom;
         this.adresse = adresse;
         this.contact = contact;
