@@ -1,7 +1,7 @@
 public class Avion {
-    private String immatriculation;
-    private String modele;
-    private int capacite;
+    private final String immatriculation;
+    private final String modele;
+    private final int capacite;
 
     public Avion(String immatriculation, String modele, int capacite) {
         this.immatriculation = immatriculation;

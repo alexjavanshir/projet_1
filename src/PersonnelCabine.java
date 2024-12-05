@@ -1,17 +1,20 @@
 public class PersonnelCabine extends Employe {
-    private int qualification;
+    private final String qualification;
     private Vol volAttribue;
 
-    public PersonnelCabine(String nom, String adresse, int contact, int numeroEmploye, String dateEmbauche, int qualification) {
+    public PersonnelCabine(String nom, String adresse, int contact, int numeroEmploye, String dateEmbauche, String qualification) {
         super(nom, adresse, contact, numeroEmploye, dateEmbauche);
         this.qualification = qualification;
         this.volAttribue = null;
+    }
+    public String getQualification(){
+        return qualification;
     }
 
     public void affecterVol(Vol vol) {
         if (volAttribue == null) {
             this.volAttribue = vol;
-            System.out.println("Le personnel cabine " + super.getNom() + " est affecté au vol " + vol.getNumeroVol() + ".");
+            System.out.println("Le personnel cabine " + super.getNom() + " (" + getQualification()+ ") est affecté au vol " + vol.getNumeroVol() + ".");
         } else {
             System.out.println("Le personnel cabine " + super.getNom() + " est déjà affecté au vol " + volAttribue.getNumeroVol() + ".");
         }

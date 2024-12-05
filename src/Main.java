@@ -38,7 +38,7 @@ public class Main {
         vol2.obtenirVol();
 
         Pilote pilote1 = new Pilote("Pierre Durand", "789 Rue Pilot", 234567890, 1, "2020-03-01", 12345, 500);
-        PersonnelCabine cabine1 = new PersonnelCabine("Lucie Martin", "101 Rue Cabin", 112233445, 2, "2022-05-10", 6789);
+        PersonnelCabine cabine1 = new PersonnelCabine("Lucie Martin", "101 Rue Cabin", 112233445, 2, "2022-05-10", "Novice");
 
         pilote1.affecterVol(vol1);
         cabine1.affecterVol(vol1);
