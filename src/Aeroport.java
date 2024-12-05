@@ -1,21 +1,35 @@
-public class Aeroport {
-    private String name;
-    private String ville;
-    private String description;
+import java.util.ArrayList;
+import java.util.List;
 
-    public Aeroport(String name, String ville, String description) {
-        this.name = name;
-        this.ville = ville;
-        this.description = description;
+public class Aeroport {
+    private String nom;
+    private String localisation;
+    private List<Vol> vols;
+
+    public Aeroport(String nom, String localisation) {
+        this.nom = nom;
+        this.localisation = localisation;
+        this.vols = new ArrayList<>();
     }
 
-    public void affecterVol(Vol vol, boolean estDepart) {
-        if (estDepart) {
-            vol.setOrigine(this.name);
-            System.out.println("L'aéroport " + name + " est défini comme point de départ pour le vol " + vol.getNumeroVol() + ".");
+    public String getNom() {
+        return nom;
+    }
+
+    public String getLocalisation() {
+        return localisation;
+    }
+
+    public void ajouterVol(Vol vol) {
+        vols.add(vol);
+    }
+
+    public void afficherVols() {
+        if (vols.isEmpty()) {
+            System.out.println("Aucun vol programmé pour l'aéroport " + nom + ".");
         } else {
-            vol.setDestination(this.name);
-            System.out.println("L'aéroport " + name + " est défini comme point d'arrivée pour le vol " + vol.getNumeroVol() + ".");
+            System.out.println("Vols au départ de l'aéroport " + nom + " :");
+            vols.forEach(vol -> System.out.println(vol.getNumeroVol() + " : " + vol.getDepart() + " -> " + vol.getArrivee()));
         }
     }
 }

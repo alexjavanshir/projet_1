@@ -3,79 +3,60 @@ import java.util.List;
 
 public class Vol {
     private String numeroVol;
-    private String origine;
-    private String destination;
+    private String depart;
+    private String arrivee;
     private String dateHeureDepart;
     private String dateHeureArrivee;
     private String etat;
-    private List<Reservation> reservations;
+    private Avion avion;
+    private List<Passager> passagers;
 
-    public Vol(String numeroVol, String origine, String destination) {
+    public Vol(String numeroVol, String depart, String arrivee) {
         this.numeroVol = numeroVol;
-        this.origine = origine;
-        this.destination = destination;
-        this.reservations = new ArrayList<>();
+        this.depart = depart;
+        this.arrivee = arrivee;
+        this.passagers = new ArrayList<>();
     }
 
     public String getNumeroVol() {
         return numeroVol;
     }
 
-    public String getOrigine() {
-        return origine;
-    }
-    public void setOrigine(String origine){
-        this.origine = origine;
+    public String getDepart() {
+        return depart;
     }
 
-    public String getDestination() {
-        return destination;
-    }
-    public void setDestination(String destination){
-        this.destination = destination;
-    }
-
-    public String getDateHeureDepart() {
-        return dateHeureDepart;
+    public String getArrivee() {
+        return arrivee;
     }
 
     public void setDateHeureDepart(String dateHeureDepart) {
         this.dateHeureDepart = dateHeureDepart;
     }
 
-    public String getDateHeureArrivee() {
-        return dateHeureArrivee;
-    }
-
     public void setDateHeureArrivee(String dateHeureArrivee) {
         this.dateHeureArrivee = dateHeureArrivee;
-    }
-
-    public String getEtat() {
-        return etat;
     }
 
     public void setEtat(String etat) {
         this.etat = etat;
     }
 
-    public void affecterVol(Avion avion) {
-        System.out.println("L'avion " + avion.getImmatriculation() + " est affecté au vol " + numeroVol);
+    public void setAvion(Avion avion) {
+        this.avion = avion;
     }
 
-    public void planifierVol() {
-        System.out.println("Le vol " + numeroVol + " a été planifié.");
-    }
-
-    public void annulerVol() {
-        System.out.println("Le vol " + numeroVol + " a été annulé.");
+    public void ajouterPassager(Passager passager) {
+        passagers.add(passager);
     }
 
     public void obtenirVol() {
-        System.out.println("Détails du vol : " + numeroVol + ", " + origine + " -> " + destination);
-    }
-
-    public void ajouterReservation(Reservation reservation) {
-        reservations.add(reservation);
+        System.out.println("\n[--------DETAIL-DU-VOL--------]");
+        System.out.println("Vol " + numeroVol + " : " + depart + " -> " + arrivee);
+        System.out.println("Départ : " + dateHeureDepart);
+        System.out.println("Arrivée : " + dateHeureArrivee);
+        System.out.println("État : " + etat);
+        System.out.println("Avion : " + (avion != null ? avion.getModele() : "pas encore attribué"));
+        System.out.println("[--------DETAIL-DU-VOL--------]\n");
     }
 }

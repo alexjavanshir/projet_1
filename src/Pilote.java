@@ -1,25 +1,37 @@
-public class Pilote extends Employe {
-    private int license;
-    private int heureDeVol;
-    private Vol volAttribue;
+public class Pilote {
+    private String nom;
+    private String adresse;
+    private int telephone;
+    private int idEmploye;
+    private String dateEmbauche;
+    private int numLicence;
+    private int heuresVol;
 
-    public Pilote(String nom, String adresse, int contact, int numeroEmploye, String dateEmbauche, int license, int heureDeVol) {
-        super(nom, adresse, contact, numeroEmploye, dateEmbauche);
-        this.license = license;
-        this.heureDeVol = heureDeVol;
-        this.volAttribue = null;
+    public Pilote(String nom, String adresse, int telephone, int idEmploye, String dateEmbauche, int numLicence, int heuresVol) {
+        this.nom = nom;
+        this.adresse = adresse;
+        this.telephone = telephone;
+        this.idEmploye = idEmploye;
+        this.dateEmbauche = dateEmbauche;
+        this.numLicence = numLicence;
+        this.heuresVol = heuresVol;
+    }
+
+    public String getNom() {
+        return nom;
     }
 
     public void affecterVol(Vol vol) {
-        if (volAttribue == null) {
-            this.volAttribue = vol;
-            System.out.println("Le pilote " + super.getNom() + " est affecté au vol " + vol.getNumeroVol() + ".");
-        } else {
-            System.out.println("Le pilote " + super.getNom() + " est déjà affecté au vol " + volAttribue.getNumeroVol() + ".");
-        }
+        System.out.println("Pilote " + nom + " affecté au vol " + vol.getNumeroVol());
     }
-
-    public Vol obtenirVol() {
-        return volAttribue;
+    public void obtenirInfos() {
+        System.out.println("\n[--------INFO-PERSONNEL--------]");
+        System.out.println("Nom : " + nom);
+        System.out.println("Adresse : " + adresse);
+        System.out.println("Téléphone : " + telephone);
+        System.out.println("ID Employé : " + idEmploye);
+        System.out.println("Date d'embauche : " + dateEmbauche);
+        System.out.println("Heures de vol : " + heuresVol);
+        System.out.println("[--------INFO-PERSONNEL--------]\n");
     }
 }

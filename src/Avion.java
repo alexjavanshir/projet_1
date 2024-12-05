@@ -1,7 +1,7 @@
 public class Avion {
-    private final String immatriculation;
-    private final String modele;
-    private final int capacite;
+    private String immatriculation;
+    private String modele;
+    private int capacite;
 
     public Avion(String immatriculation, String modele, int capacite) {
         this.immatriculation = immatriculation;
@@ -17,15 +17,7 @@ public class Avion {
         return modele;
     }
 
-    public int getCapacite() {
-        return capacite;
-    }
-
     public void affecterVol(Vol vol) {
-        System.out.println("L'avion " + immatriculation + " est affecté au vol " + vol.getNumeroVol() + ".");
-    }
-
-    public boolean verifierDisponibilite() {
-        return true;
+        System.out.println("Avion " + immatriculation + " affecté au vol " + vol.getNumeroVol());
     }
 }

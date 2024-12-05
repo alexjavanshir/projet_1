@@ -1,42 +1,42 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class Passager extends Personne {
-    private String passport;
+public class Passager {
+    private String nom;
+    private String adresse;
+    private int telephone;
+    private String passeport;
     private List<Reservation> reservations;
 
-    public Passager(String nom, String adresse, int contact, String passport) {
-        super(nom, adresse, contact);
-        this.passport = passport;
+    public Passager(String nom, String adresse, int telephone, String passeport) {
+        this.nom = nom;
+        this.adresse = adresse;
+        this.telephone = telephone;
+        this.passeport = passeport;
         this.reservations = new ArrayList<>();
     }
 
-    public String getPassport() {
-        return passport;
+    public String getNom() {
+        return nom;
+    }
+
+    public void reserverVol(Vol vol) {
+        reservations.add(new Reservation(this, vol));
+    }
+
+    public void annulerReservation(int id) {
+        reservations.removeIf(reservation -> reservation.getId() == id);
     }
 
     public List<Reservation> getReservations() {
         return reservations;
     }
 
-    public void reserverVol(Vol vol) {
-        Reservation reservation = new Reservation(vol, this);
-        reservations.add(reservation);
-        System.out.println("Le passager " + getNom() + " a réservé le vol " + vol.getNumeroVol());
-    }
-
-    public void annulerReservation(int numeroReservation) {
-        reservations.removeIf(reservation -> reservation.getNumeroReservation() == numeroReservation);
-        System.out.println("La réservation #" + numeroReservation + " a été annulée.");
-    }
-
     public void obtenirReservations() {
         if (reservations.isEmpty()) {
             System.out.println("Aucune réservation.");
         } else {
-            for (Reservation reservation : reservations) {
-                System.out.println(reservation);
-            }
+            reservations.forEach(System.out::println);
         }
     }
 }
