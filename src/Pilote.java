@@ -13,9 +13,9 @@ public class Pilote extends Employe {
     public void affecterVol(Vol vol) {
         if (volAttribue == null) {
             this.volAttribue = vol;
-            System.out.println("Le pilote " + getNom("") + " est affecté au vol " + vol.getNumeroVol() + ".");
+            System.out.println("Le pilote " + super.getNom() + " est affecté au vol " + vol.getNumeroVol() + ".");
         } else {
-            System.out.println("Le pilote " + getNom("") + " est déjà affecté au vol " + volAttribue.getNumeroVol() + ".");
+            System.out.println("Le pilote " + super.getNom() + " est déjà affecté au vol " + volAttribue.getNumeroVol() + ".");
         }
     }
 

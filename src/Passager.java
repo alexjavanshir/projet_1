@@ -2,40 +2,41 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Passager extends Personne {
-    private String passeport;
-    private final List<Reservation> reservations;
+    private String passport;
+    private List<Reservation> reservations;
 
-    public Passager(String nom, String adresse, int contact, String passeport) {
+    public Passager(String nom, String adresse, int contact, String passport) {
         super(nom, adresse, contact);
-        this.passeport = passeport;
+        this.passport = passport;
         this.reservations = new ArrayList<>();
     }
 
-    public String getPasseport() {
-        return passeport;
+    public String getPassport() {
+        return passport;
     }
 
-    public void setPasseport(String passeport) {
-        this.passeport = passeport;
+    public List<Reservation> getReservations() {
+        return reservations;
     }
 
     public void reserverVol(Vol vol) {
         Reservation reservation = new Reservation(vol, this);
         reservations.add(reservation);
-        System.out.println("Le passager " + getNom("") + " a réservé le vol " + vol.getNumeroVol() + ".");
+        System.out.println("Le passager " + getNom() + " a réservé le vol " + vol.getNumeroVol());
     }
 
-    public void annulerReservation(Reservation reservation) {
-        if (reservations.contains(reservation)) {
-            reservations.remove(reservation);
-            reservation.annulerReservation();
-            System.out.println("La réservation pour le vol " + reservation.getVol().getNumeroVol() + " a été annulée.");
+    public void annulerReservation(int numeroReservation) {
+        reservations.removeIf(reservation -> reservation.getNumeroReservation() == numeroReservation);
+        System.out.println("La réservation #" + numeroReservation + " a été annulée.");
+    }
+
+    public void obtenirReservations() {
+        if (reservations.isEmpty()) {
+            System.out.println("Aucune réservation.");
         } else {
-            System.out.println("Réservation non trouvée pour ce passager.");
+            for (Reservation reservation : reservations) {
+                System.out.println(reservation);
+            }
         }
-    }
-
-    public List<Reservation> obtenirReservations() {
-        return reservations;
     }
 }

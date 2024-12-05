@@ -36,15 +36,15 @@ public class Personne {
         return identifiant;
     }
 
-    public String getNom(String nom) {
+    public String getNom() {
         return nom;
     }
 
-    public String getAdresse(String adresse) {
+    public String getAdresse() {
         return adresse;
     }
 
-    public int getContact(int contact) {
+    public int getContact() {
         return contact;
     }
 

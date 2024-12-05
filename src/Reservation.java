@@ -1,36 +1,24 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class Reservation {
-    private final String numeroReservation;
+    private static int compteurReservation = 1;
+    private final int numeroReservation;
+    private final Vol vol;
+    private final Passager passager;
     private final String dateReservation;
     private String statut;
-    private Vol vol;
-    private final Passager passager;
 
     public Reservation(Vol vol, Passager passager) {
-        this.numeroReservation = genererNumeroReservation();
-        this.dateReservation = java.time.LocalDate.now().toString(); // Date actuelle
-        this.statut = "Confirmée";
+        this.numeroReservation = compteurReservation++;
         this.vol = vol;
         this.passager = passager;
+        this.dateReservation = java.time.LocalDate.now().toString();
+        this.statut = "Confirmée";
     }
 
-    private String genererNumeroReservation() {
-        return "RES" + (int) (Math.random() * 10000);
-    }
-
-    public String getNumeroReservation() {
+    public int getNumeroReservation() {
         return numeroReservation;
-    }
-
-    public String getDateReservation() {
-        return dateReservation;
-    }
-
-    public String getStatut() {
-        return statut;
-    }
-
-    public void setStatut(String statut) {
-        this.statut = statut;
     }
 
     public Vol getVol() {
@@ -41,16 +29,17 @@ public class Reservation {
         return passager;
     }
 
-    public void confirmerReservation() {
-        this.statut = "Confirmée";
+    public String getStatut() {
+        return statut;
     }
 
-    public void annulerReservation() {
-        this.statut = "Annulée";
+    public void setStatut(String statut) {
+        this.statut = statut;
     }
 
-    public void modifierReservation(Vol nouveauVol) {
-        this.vol = nouveauVol;
-        System.out.println("La réservation a été mise à jour avec le vol " + nouveauVol.getNumeroVol() + ".");
+    @Override
+    public String toString() {
+        return String.format("Réservation #%d : Vol %s, Passager %s, Date : %s, Statut : %s",
+                numeroReservation, vol.getNumeroVol(), passager.getNom(), dateReservation, statut);
     }
 }
