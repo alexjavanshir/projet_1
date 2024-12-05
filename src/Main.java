@@ -5,19 +5,15 @@ public class Main {
         vol1.setOrigine("Paris");
         vol1.setDestination("New York");
 
-        Avion avion1 = new Avion();
-        avion1.affecterVol(vol1);
+        Passager passager1 = new Passager("Alice Dupont", "10 rue de Paris", 123456789, "FR12345678");
 
-        Pilote pilote1 = new Pilote();
-        pilote1.affecterVol(vol1);
+        passager1.reserverVol(vol1);
 
-        PersonnelCabine cabine1 = new PersonnelCabine();
-        cabine1.affecterVol(vol1);
+        for (Reservation res : passager1.obtenirReservations()) {
+            System.out.println("Réservation : " + res.getNumeroReservation() + ", Vol : " + res.getVol().getNumeroVol());
+        }
 
-/*
-        GestionnaireVol gestionnaire = new GestionnaireVol(vol1);
-        gestionnaire.affecterAvion(avion1);
-        gestionnaire.affecterPilote(pilote1);
-        gestionnaire.affecterPersonnelCabine(cabine1);*/
+        Reservation reservation = passager1.obtenirReservations().get(0);
+        passager1.annulerReservation(reservation);
     }
 }
