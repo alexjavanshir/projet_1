@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
-//je sais pas comment l'implementer avec le reste.
+
 public class Aeroport {
     private String nom;
     private String localisation;
@@ -26,10 +26,13 @@ public class Aeroport {
 
     public void afficherVols() {
         if (vols.isEmpty()) {
-            System.out.println("Aucun vol programmé pour l'aéroport " + nom + ".");
+            System.out.println("\nAucun vol programmé pour l'aéroport " + nom + ".\n");
         } else {
-            System.out.println("Vols au départ de l'aéroport " + nom + " :");
-            vols.forEach(vol -> System.out.println(vol.getNumeroVol() + " : " + vol.getDepart() + " -> " + vol.getArrivee()));
+            System.out.println("\nVols au départ de l'aéroport " + nom + " :");
+            for (Vol vol : vols) {
+                System.out.println(vol.getNumeroVol() + " : " + vol.getDepart() + " -> " + vol.getArrivee());
+            }
+            System.out.println();
         }
     }
 }

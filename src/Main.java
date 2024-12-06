@@ -43,6 +43,15 @@ public class Main {
         scanner.nextLine();
         return selectedAvion;
     }
+    private static Aeroport choisirAeroport(Scanner scanner, List<Aeroport> aeroports) {
+        System.out.println("Choisir l'aéroport :");
+        for (int i = 0; i < aeroports.size(); i++) {
+            System.out.println((i + 1) + ". " + aeroports.get(i).getNom() + " (" + aeroports.get(i).getLocalisation() + ")");
+        }
+        Aeroport selectedAeroport = aeroports.get(scanner.nextInt() - 1);
+        scanner.nextLine();
+        return selectedAeroport;
+    }
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
@@ -72,6 +81,20 @@ public class Main {
         vol3.setDateHeureArrivee("2024-12-25 06:00");
         vol3.setEtat("Planifié");
 
+        Aeroport aeroportParis = new Aeroport("CDG", "Paris");
+        Aeroport aeroportNY = new Aeroport("JFK", "New York");
+        Aeroport aeroportMB = new Aeroport("BOM", "Mumbai");
+        Aeroport aeroportSL = new Aeroport("ICN", "Séoul");
+
+        aeroportParis.ajouterVol(vol1);
+        aeroportParis.ajouterVol(vol2);
+        aeroportParis.ajouterVol(vol3);
+
+        aeroportNY.ajouterVol(vol1);
+        aeroportMB.ajouterVol(vol2);
+        aeroportSL.ajouterVol(vol3);
+
+
         Pilote pilote1 = new Pilote("Nicolas Durand", "79 Rue de Charonne", 658121101, 1, "2020-03-01", 12345, 500);
         Pilote pilote2 = new Pilote("Emma Boulanger", "99 Rue de la Roquette", 650148995, 2, "2018-01-01", 12345, 700);
 
@@ -84,11 +107,12 @@ public class Main {
         List<Vol> vols = new ArrayList<>(List.of(vol1, vol2, vol3));
         List<Pilote> pilotes = new ArrayList<>(List.of(pilote1, pilote2));
         List<PersonnelCabine> personnelsCabine = new ArrayList<>(List.of(cabine1, cabine2));
+        List<Aeroport> aeroports = new ArrayList<>(List.of(aeroportParis, aeroportNY, aeroportMB, aeroportSL));
 
         int choice;
         do {
             System.out.println("[------------MENU-DE-COMMANDES------------]");
-            System.out.println("1. Réserver un vol\n2. Annuler une réservation\n3. Affecter un avion à un vol\n4. Affecter un équipage à un vol\n<--------AFFICHAGES-------->\n5. Afficher les réservations d'un passager\n6. Afficher détails d'un vol\n7. Afficher détails du personnel\n8. Afficher détails d'un avion\n9. Afficher détails d'un passager\n10. Quitter");
+            System.out.println("1. Réserver un vol\n2. Annuler une réservation\n3. Affecter un avion à un vol\n4. Affecter un équipage à un vol\n<--------AFFICHAGES-------->\n5. Afficher les réservations d'un passager\n6. Afficher détails d'un vol\n7. Afficher détails du personnel\n8. Afficher détails d'un avion\n9. Afficher détails d'un passager\n10. Afficher les vols d'un aéroport\n11. Quitter");
             System.out.print("[------------MENU-DE-COMMANDES------------]\n>>> ");
             choice = scanner.nextInt();
             scanner.nextLine();
@@ -158,12 +182,16 @@ public class Main {
                     selectedPassager.obtenirInfos();
                 }
                 case 10 -> {
+                    Aeroport selectedAeroport = choisirAeroport(scanner, aeroports);
+                    selectedAeroport.afficherVols();
+                }
+                case 11 -> {
                     System.out.println("Fin de programme.");
                     System.exit(0);
                 }
                 default -> System.out.println("\nChoix invalide.\n");
             }
-        } while (choice != 10);
+        } while (choice != 11);
 
         scanner.close();
     }
