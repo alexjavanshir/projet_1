@@ -1,3 +1,5 @@
+package org.example;
+
 public class Employe extends Personne {
     private int numeroEmploye;
     private String dateEmbauche;

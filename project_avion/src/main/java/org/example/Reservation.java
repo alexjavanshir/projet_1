@@ -1,3 +1,5 @@
+package org.example;
+
 public class Reservation {
     private static int counter = 1;
     private int id;
@@ -20,6 +22,6 @@ public class Reservation {
 
     @Override
     public String toString() {
-        return "\nRéservation #" + id + " : Vol " + vol.getNumeroVol() + " (" + vol.getDepart() + " -> " + vol.getArrivee() + ")\n";
+        return "\nRéservation #" + id + " : org.example.Vol " + vol.getNumeroVol() + " (" + vol.getDepart() + " -> " + vol.getArrivee() + ")\n";
     }
 }

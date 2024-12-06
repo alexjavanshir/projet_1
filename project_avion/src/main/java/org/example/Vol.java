@@ -1,3 +1,5 @@
+package org.example;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -53,11 +55,11 @@ public class Vol {
 
     public void obtenirVol() {
         System.out.println("\n[--------DETAIL-DU-VOL--------]");
-        System.out.println("Vol " + numeroVol + " : " + depart + " -> " + arrivee);
+        System.out.println("org.example.Vol " + numeroVol + " : " + depart + " -> " + arrivee);
         System.out.println("Départ : " + dateHeureDepart);
         System.out.println("Arrivée : " + dateHeureArrivee);
         System.out.println("État : " + etat);
-        System.out.println("Avion : " + (avion != null ? avion.getModele() : "pas encore attribué"));
+        System.out.println("org.example.Avion : " + (avion != null ? avion.getModele() : "pas encore attribué"));
         System.out.println("[--------DETAIL-DU-VOL--------]\n");
     }
 

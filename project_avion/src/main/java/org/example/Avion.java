@@ -1,3 +1,5 @@
+package org.example;
+
 import java.util.Scanner;
 
 public class Avion {
@@ -20,7 +22,7 @@ public class Avion {
     }
 
     public void affecterVol(Vol vol) {
-        System.out.println("Avion " + immatriculation + " affecté au vol " + vol.getNumeroVol());
+        System.out.println("org.example.Avion " + immatriculation + " affecté au vol " + vol.getNumeroVol());
     }
 
     public void obtenirInfos() {
