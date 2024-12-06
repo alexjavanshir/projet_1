@@ -58,8 +58,4 @@ public class Pilote {
         scanner.nextLine();
         return new Pilote(nomPilote, adressePilote, telephonePilote, idPilote, dateEmbauche,licence, heuresDeVol);
     }
-
-    public static Passager supprimerPilote() {
-        return null;
-    }
 }
