@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Aeroport {
     private String nom;
@@ -34,5 +35,13 @@ public class Aeroport {
             }
             System.out.println();
         }
+    }
+    public static Aeroport ajouterAeroport(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Nom de l'aéroport : ");
+        String nomAeroport = scanner.nextLine();
+        System.out.print("Localisation de l'aéroport : ");
+        String localisationAeroport = scanner.nextLine();
+        return new Aeroport(nomAeroport, localisationAeroport);
     }
 }

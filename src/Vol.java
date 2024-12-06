@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Vol {
     private String numeroVol;
@@ -58,5 +59,16 @@ public class Vol {
         System.out.println("État : " + etat);
         System.out.println("Avion : " + (avion != null ? avion.getModele() : "pas encore attribué"));
         System.out.println("[--------DETAIL-DU-VOL--------]\n");
+    }
+
+    public static Vol ajouterVol(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Numéro du vol : ");
+        String numeroVol = scanner.nextLine();
+        System.out.print("Ville de départ : ");
+        String villeDepart = scanner.nextLine();
+        System.out.print("Ville d'arrivée : ");
+        String villeArrivee = scanner.nextLine();
+        return new Vol(numeroVol, villeDepart, villeArrivee);
     }
 }

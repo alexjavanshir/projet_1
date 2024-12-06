@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Avion {
     private String immatriculation;
     private String modele;
@@ -27,5 +29,18 @@ public class Avion {
         System.out.println("Modèle : " + modele);
         System.out.println("Capacité : " + capacite);
         System.out.println("[--------INFO-DE-L-AVION--------]\n");
+    }
+
+    public static Avion ajouterAvion(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Immatriculation de l'avion : ");
+        String immatriculationAvion = scanner.nextLine();
+        System.out.print("Modèle de l'avion : ");
+        String modeleAvion = scanner.nextLine();
+        System.out.print("Capacité de l'avion : ");
+        int capaciteAvion = scanner.nextInt();
+        scanner.nextLine();
+        return new Avion(immatriculationAvion, modeleAvion, capaciteAvion);
+
     }
 }

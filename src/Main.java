@@ -112,8 +112,34 @@ public class Main {
         int choice;
         do {
             System.out.println("[------------MENU-DE-COMMANDES------------]");
-            System.out.println("1. Réserver un vol\n2. Annuler une réservation\n3. Affecter un avion à un vol\n4. Affecter un équipage à un vol\n<--------AFFICHAGES-------->\n5. Afficher les réservations d'un passager\n6. Afficher détails d'un vol\n7. Afficher détails du personnel\n8. Afficher détails d'un avion\n9. Afficher détails d'un passager\n10. Afficher les vols d'un aéroport\n11. Quitter");
-            System.out.print("[------------MENU-DE-COMMANDES------------]\n>>> ");
+            System.out.println("1. Réserver un vol");
+            System.out.println("2. Annuler une réservation");
+            System.out.println("3. Affecter un avion à un vol");
+            System.out.println("4. Affecter un équipage à un vol");
+            System.out.println("<--------AFFICHAGES-------->");
+            System.out.println("5. Afficher les réservations d'un passager");
+            System.out.println("6. Afficher détails d'un vol");
+            System.out.println("7. Afficher détails du personnel");
+            System.out.println("8. Afficher détails d'un avion");
+            System.out.println("9. Afficher détails d'un passager");
+            System.out.println("10. Afficher vols d'un aéroport");
+            System.out.println("<----------AJOUTS---------->");
+            System.out.println("11. Ajouter Passager");
+            System.out.println("12. Ajouter Pilote");
+            System.out.println("13. Ajouter Personnel Cabine");
+            System.out.println("14. Ajouter Avion");
+            System.out.println("15. Ajouter Vol");
+            System.out.println("16. Ajouter Aéroport");
+            System.out.println("<----------RETRAIT---------->");
+            System.out.println("17. Supprimer Passager");
+            System.out.println("18. Supprimer Pilote");
+            System.out.println("19. Supprimer Personnel Cabine");
+            System.out.println("20. Supprimer Avion");
+            System.out.println("21. Supprimer Vol");
+            System.out.println("22. Supprimer Aéroport");
+            System.out.println("23. Quitter");
+            System.out.println("[------------------------------------------]");
+            System.out.print(">>> ");
             choice = scanner.nextInt();
             scanner.nextLine();
 
@@ -186,6 +212,76 @@ public class Main {
                     selectedAeroport.afficherVols();
                 }
                 case 11 -> {
+
+                    Passager nouveauPassager = Passager.ajouterPassager();
+                    passagers.add(nouveauPassager);
+                    System.out.println("Passager ajouté avec succès.");
+                }
+                case 12 -> {
+                    Pilote nouveauPilote = Pilote.ajouterPilote();
+                    pilotes.add(nouveauPilote);
+                    System.out.println("Pilote ajouté avec succès.");
+                }
+                case 13 -> {
+                    PersonnelCabine nouveauPersonnel = PersonnelCabine.ajouterPersonnelCabine();
+                    personnelsCabine.add(nouveauPersonnel);
+                    System.out.println("Personnel de cabine ajouté avec succès.");
+                }
+                case 14 -> {
+                    Avion nouvelAvion = Avion.ajouterAvion();
+                    avions.add(nouvelAvion);
+                    System.out.println("Avion ajouté avec succès.");
+                }
+                case 15 -> {
+                    Aeroport aeroportAssocie = choisirAeroport(scanner, aeroports);
+                    Vol nouveauVol = Vol.ajouterVol();
+                    System.out.print("Date et heure de départ (YYYY-MM-DD HH:MM) : ");
+                    String dateHeureDepart = scanner.nextLine();
+                    System.out.print("Date et heure d'arrivée (YYYY-MM-DD HH:MM) : ");
+                    String dateHeureArrivee = scanner.nextLine();
+                    nouveauVol.setDateHeureDepart(dateHeureDepart);
+                    nouveauVol.setDateHeureArrivee(dateHeureArrivee);
+                    nouveauVol.setEtat("Planifié");
+                    aeroportAssocie.ajouterVol(nouveauVol);
+                    vols.add(nouveauVol);
+                    System.out.println("Vol ajouté avec succès.");
+                }
+                case 16 -> {
+                    Aeroport nouvelAeroport = Aeroport.ajouterAeroport();
+                    aeroports.add(nouvelAeroport);
+                    System.out.println("Aéroport ajouté avec succès.");
+                }
+                case 17 -> {
+                    Passager selectedPassager = choisirPassager(scanner, passagers);
+                    passagers.remove(selectedPassager);
+                    System.out.println("Passager supprimé avec succès.");
+                }
+                case 18 -> {
+                    Pilote selectedPilote = choisirPilote(scanner, pilotes);
+                    pilotes.remove(selectedPilote);
+                    System.out.println("Pilote supprimé avec succès.");
+                }
+                case 19 -> {
+                    PersonnelCabine selectedPersonnelCabine = choisirPersonnelCabine(scanner, personnelsCabine);
+                    personnelsCabine.remove(selectedPersonnelCabine);
+                    System.out.println("Personnels cabine supprimé avec succès.");
+                }
+                case 20 -> {
+                    Avion selectedAvion = choisirAvion(scanner, avions);
+                    avions.remove(selectedAvion);
+                    System.out.println("Avion supprimé avec succès.");
+                }
+                case 21 -> {
+                    Vol selectedVol = choisirVol(scanner, vols);
+                    vols.remove(selectedVol);
+                    System.out.println("Vol supprimé avec succès.");
+                }
+                case 22 -> {
+                    Aeroport selectedAeroport = choisirAeroport(scanner, aeroports);
+                    aeroports.remove(selectedAeroport);
+                    System.out.println("Pilote supprimé avec succès.");
+                }
+                case 23 -> {
                     System.out.println("Fin de programme.");
                     System.exit(0);
                 }

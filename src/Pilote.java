@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Pilote {
     private String nom;
     private String adresse;
@@ -33,5 +35,31 @@ public class Pilote {
         System.out.println("Date d'embauche : " + dateEmbauche);
         System.out.println("Heures de vol : " + heuresVol);
         System.out.println("[--------INFO-PERSONNEL--------]\n");
+    }
+    public static Pilote ajouterPilote() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Nom du pilote : ");
+        String nomPilote = scanner.nextLine();
+        System.out.print("Adresse du pilote : ");
+        String adressePilote = scanner.nextLine();
+        System.out.print("Numéro de téléphone : ");
+        int telephonePilote = scanner.nextInt();
+        scanner.nextLine();
+        System.out.print("Numéro d'identification du pilote : ");
+        int idPilote = scanner.nextInt();
+        scanner.nextLine();
+        System.out.print("Date d'embauche (YYYY-MM-DD) : ");
+        String dateEmbauche = scanner.nextLine();
+        System.out.print("Numéro de licence : ");
+        int licence = scanner.nextInt();
+        scanner.nextLine();
+        System.out.print("Heures de vol : ");
+        int heuresDeVol = scanner.nextInt();
+        scanner.nextLine();
+        return new Pilote(nomPilote, adressePilote, telephonePilote, idPilote, dateEmbauche,licence, heuresDeVol);
+    }
+
+    public static Passager supprimerPilote() {
+        return null;
     }
 }

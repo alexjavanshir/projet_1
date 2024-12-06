@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Passager {
     private String nom;
@@ -14,6 +15,23 @@ public class Passager {
         this.telephone = telephone;
         this.passeport = passeport;
         this.reservations = new ArrayList<>();
+    }
+
+    public static Passager ajouterPassager() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Nom du passager : ");
+        String nomPassager = scanner.nextLine();
+        System.out.print("Adresse du passager : ");
+        String adressePassager = scanner.nextLine();
+        System.out.print("Numéro de téléphone : ");
+        int telephonePassager = scanner.nextInt();
+        scanner.nextLine();
+        System.out.print("Numéro de passeport : ");
+        String passeportPassager = scanner.nextLine();
+        return new Passager(nomPassager, adressePassager, telephonePassager, passeportPassager);
+    }
+    public static Passager supprimerPassager() {
+        return null;
     }
 
     public String getNom() {
