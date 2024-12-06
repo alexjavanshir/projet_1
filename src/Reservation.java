@@ -20,6 +20,6 @@ public class Reservation {
 
     @Override
     public String toString() {
-        return "Réservation #" + id + " : " + vol.getNumeroVol() + " (" + vol.getDepart() + " -> " + vol.getArrivee() + ")";
+        return "\nRéservation #" + id + " : Vol " + vol.getNumeroVol() + " (" + vol.getDepart() + " -> " + vol.getArrivee() + ")\n";
     }
 }
