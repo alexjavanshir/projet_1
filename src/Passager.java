@@ -47,7 +47,7 @@ public class Passager {
 
     public void obtenirReservations() {
         if (reservations.isEmpty()) {
-            System.out.println("Aucune réservation.");
+            System.out.println("\nAucune réservation.\n");
         } else {
             reservations.forEach(System.out::println);
         }

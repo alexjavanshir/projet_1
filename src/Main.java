@@ -48,7 +48,9 @@ public class Main {
 
         int choice;
         do {
-            System.out.println("Menu :\n1. Réserver un vol\n2. Annuler une réservation\n3. Afficher les réservations d'un passager\n4. Affecter un avion à un vol\n5. Affecter un équipage à un vol\n6. Afficher détails d'un vol\n7. Afficher détails du personnel\n8. Afficher détails d'un avion\n9. Afficher détails d'un passager\n10. Quitter\nVotre choix :");
+            System.out.println("[------------MENU-DE-COMMANDES------------]");
+            System.out.println("1. Réserver un vol\n2. Annuler une réservation\n3. Affecter un avion à un vol\n4. Affecter un équipage à un vol\n<--------AFFICHAGES-------->\n5. Afficher les réservations d'un passager\n6. Afficher détails d'un vol\n7. Afficher détails du personnel\n8. Afficher détails d'un avion\n9. Afficher détails d'un passager\n10. Quitter");
+            System.out.print("[------------MENU-DE-COMMANDES------------]\n>>> ");
             choice = scanner.nextInt();
             scanner.nextLine();
 
@@ -74,7 +76,7 @@ public class Main {
                     scanner.nextLine();
                     List<Reservation> reservations = selectedPassager.getReservations();
                     if (reservations.isEmpty()) {
-                        System.out.println("Aucune réservation à annuler.");
+                        System.out.println("\nAucune réservation à annuler.\n");
                     } else {
                         for (Reservation reservation : reservations)
                             System.out.println(reservation);
@@ -85,15 +87,6 @@ public class Main {
                     }
                 }
                 case 3 -> {
-                    System.out.println("Choisir le passager :");
-                    for (int i = 0; i < passagers.size(); i++)
-                        System.out.println((i + 1) + ". " + passagers.get(i).getNom());
-                    Passager selectedPassager = passagers.get(scanner.nextInt() - 1);
-                    scanner.nextLine();
-                    selectedPassager.obtenirReservations();
-                }
-                case 4 -> {
-                    System.out.println("Choisir l'avion :");
                     for (int i = 0; i < avions.size(); i++)
                         System.out.println((i + 1) + ". " + avions.get(i).getImmatriculation() + " (" + avions.get(i).getModele() + ")");
                     Avion selectedAvion = avions.get(scanner.nextInt() - 1);
@@ -106,7 +99,7 @@ public class Main {
                     selectedAvion.affecterVol(selectedVol);
                     selectedVol.setAvion(selectedAvion);
                 }
-                case 5 -> {
+                case 4 -> {
                     System.out.println("Choisir le pilote :");
                     for (int i = 0; i < pilotes.size(); i++)
                         System.out.println((i + 1) + ". " + pilotes.get(i).getNom());
@@ -124,6 +117,15 @@ public class Main {
                     scanner.nextLine();
                     selectedPilote.affecterVol(selectedVol);
                     selectedCabine.affecterVol(selectedVol);
+                }
+                case 5 -> {
+                    System.out.println("Choisir le passager :");
+                    for (int i = 0; i < passagers.size(); i++)
+                        System.out.println((i + 1) + ". " + passagers.get(i).getNom());
+                    Passager selectedPassager = passagers.get(scanner.nextInt() - 1);
+                    scanner.nextLine();
+                    selectedPassager.obtenirReservations();
+
                 }
                 case 6 -> {
                     System.out.println("Choisir le vol :");
