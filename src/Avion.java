@@ -20,4 +20,12 @@ public class Avion {
     public void affecterVol(Vol vol) {
         System.out.println("Avion " + immatriculation + " affecté au vol " + vol.getNumeroVol());
     }
+
+    public void obtenirInfos() {
+        System.out.println("\n[--------INFO-DE-L-AVION--------]");
+        System.out.println("Immatriculation " + immatriculation);
+        System.out.println("Modèle : " + modele);
+        System.out.println("Capacité : " + capacite);
+        System.out.println("[--------INFO-DE-L-AVION--------]\n");
+    }
 }

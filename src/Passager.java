@@ -19,6 +19,19 @@ public class Passager {
     public String getNom() {
         return nom;
     }
+    public String getAdresse() {
+        return adresse;
+    }
+    public String getTelephone() {
+        return adresse;
+    }
+
+    public String getPasseport() {
+        return passeport;
+    }
+    public List<Reservation> getReservation(){
+        return reservations;
+    }
 
     public void reserverVol(Vol vol) {
         reservations.add(new Reservation(this, vol));
@@ -38,5 +51,15 @@ public class Passager {
         } else {
             reservations.forEach(System.out::println);
         }
+    }
+
+    public void obtenirInfos() {
+        System.out.println("\n[--------INFOS-PASSAGER--------]");
+        System.out.println("Détails du passager :");
+        System.out.println("Nom : " + nom);
+        System.out.println("Adresse : " + adresse);
+        System.out.println("Téléphone : " + telephone);
+        System.out.println("Passeport : " + passeport);
+        System.out.println("[--------INFOS-PASSAGER--------]\n");
     }
 }

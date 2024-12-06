@@ -7,18 +7,19 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        Passager passager1 = new Passager("Martin Boulet", "13 Rue de Montreuil", 622457159, "A1234567");
+        Passager passager1 = new Passager("Esteban Boulet", "13 Rue de Montreuil", 622457159, "A1234567");
         Passager passager2 = new Passager("Jeanne Dupont", "25 Boulevard Raspail", 656102398, "B7654321");
         Passager passager3 = new Passager("Pierre Java", "12 Rue du Temple", 601858078, "C7519364");
-        Passager passager4 = new Passager("Louis Dupond", "141 Avenue Philippe Auguste", 699152003, "D2187439");
+        Passager passager4 = new Passager("Louis Desmoulins", "141 Avenue Philippe Auguste", 699152003, "D2187439");
 
         Avion avion1 = new Avion("F-WOEH", "Airbus A320", 180);
         Avion avion2 = new Avion("F-PAMC", "Boeing 737", 160);
         Avion avion3 = new Avion("F-ZJHD", "Airbus A220", 135);
         Avion avion4 = new Avion("F-CONC", "Le Concorde", 100);
 
-        Vol vol1 = new Vol("AF123", "Paris", "New York");
-        Vol vol2 = new Vol("AF456", "London", "Tokyo");
+        Vol vol1 = new Vol("AFPNY", "Paris", "New York");
+        Vol vol2 = new Vol("AFPMB", "Paris", "Mumbai");
+        Vol vol3 = new Vol("AFPSL", "Paris", "Séoul");
 
         vol1.setDateHeureDepart("2024-12-10 08:00");
         vol1.setDateHeureArrivee("2024-12-10 14:00");
@@ -27,6 +28,10 @@ public class Main {
         vol2.setDateHeureDepart("2024-12-15 09:00");
         vol2.setDateHeureArrivee("2024-12-15 17:00");
         vol2.setEtat("Planifié");
+
+        vol3.setDateHeureDepart("2024-12-24 14:30");
+        vol3.setDateHeureArrivee("2024-12-25 06:00");
+        vol3.setEtat("Planifié");
 
         Pilote pilote1 = new Pilote("Nicolas Durand", "79 Rue de Charonne", 658121101, 1, "2020-03-01", 12345, 500);
         Pilote pilote2 = new Pilote("Emma Boulanger", "99 Rue de la Roquette", 650148995, 2, "2018-01-01", 12345, 700);
@@ -37,13 +42,13 @@ public class Main {
 
         List<Passager> passagers = new ArrayList<>(List.of(passager1, passager2, passager3, passager4));
         List<Avion> avions = new ArrayList<>(List.of(avion1, avion2, avion3, avion4));
-        List<Vol> vols = new ArrayList<>(List.of(vol1, vol2));
+        List<Vol> vols = new ArrayList<>(List.of(vol1, vol2, vol3));
         List<Pilote> pilotes = new ArrayList<>(List.of(pilote1, pilote2));
         List<PersonnelCabine> personnelsCabine = new ArrayList<>(List.of(cabine1, cabine2));
 
         int choice;
         do {
-            System.out.println("Menu :\n1. Réserver un vol\n2. Annuler une réservation\n3. Afficher les réservations d'un passager\n4. Affecter un avion à un vol\n5. Affecter un équipage à un vol\n6. Afficher les détails d'un vol\n7. Afficher détail personnel\n8. Quitter\nVotre choix :");
+            System.out.println("Menu :\n1. Réserver un vol\n2. Annuler une réservation\n3. Afficher les réservations d'un passager\n4. Affecter un avion à un vol\n5. Affecter un équipage à un vol\n6. Afficher détails d'un vol\n7. Afficher détails du personnel\n8. Afficher détails d'un avion\n9. Afficher détails d'un passager\n10. Quitter\nVotre choix :");
             choice = scanner.nextInt();
             scanner.nextLine();
 
@@ -151,7 +156,23 @@ public class Main {
                         System.out.println("Choix invalide.");
                     }
                 }
-                case 8 -> System.out.println("Au revoir !");
+                case 8 -> {
+                    System.out.println("Choisir l'avion :");
+                    for (int i = 0; i < avions.size(); i++)
+                        System.out.println((i + 1) + ". " + avions.get(i).getImmatriculation() + " (" + avions.get(i).getModele() + ")");
+                    Avion selectedAvion = avions.get(scanner.nextInt() - 1);
+                    scanner.nextLine();
+                    selectedAvion.obtenirInfos();
+                }
+                case 9 -> {
+                    System.out.println("Choisir le passager :");
+                    for (int i = 0; i < passagers.size(); i++)
+                        System.out.println((i + 1) + ". " + passagers.get(i).getNom());
+                    Passager selectedPassager = passagers.get(scanner.nextInt() - 1);
+                    scanner.nextLine();
+                    selectedPassager.obtenirInfos();
+                }
+                case 10 -> System.out.println("Fin de programme.");
                 default -> System.out.println("Choix invalide.");
             }
         } while (choice != 7);
