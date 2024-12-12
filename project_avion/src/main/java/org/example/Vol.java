@@ -33,6 +33,10 @@ public class Vol {
         return arrivee;
     }
 
+    public List<Passager> getPassagers() {
+        return passagers;
+    }
+
     public void setDateHeureDepart(String dateHeureDepart) {
         this.dateHeureDepart = dateHeureDepart;
     }
@@ -47,6 +51,10 @@ public class Vol {
 
     public void setAvion(Avion avion) {
         this.avion = avion;
+    }
+
+    public Avion getAvion() {
+        return avion;
     }
 
     public void ajouterPassager(Passager passager) {

@@ -21,6 +21,10 @@ public class Avion {
         return modele;
     }
 
+    public int getCapacite() {
+        return capacite;
+    }
+
     public void affecterVol(Vol vol) {
         System.out.println("org.example.Avion " + immatriculation + " affecté au vol " + vol.getNumeroVol());
     }

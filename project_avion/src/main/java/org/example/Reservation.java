@@ -20,6 +20,10 @@ public class Reservation {
         return vol;
     }
 
+    public Passager getPassager() {
+        return passager;
+    }
+
     @Override
     public String toString() {
         return "\nRéservation #" + id + " : org.example.Vol " + vol.getNumeroVol() + " (" + vol.getDepart() + " -> " + vol.getArrivee() + ")\n";
